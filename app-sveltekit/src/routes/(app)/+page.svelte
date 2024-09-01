@@ -1,4 +1,6 @@
 <script lang="ts">
+	import DashboardTableSimpananPokok from '$lib/components/dashboard/dashboard-table-simpanan-pokok.svelte';
+	import Gadget from '$lib/components/dashboard/gadget.svelte';
 	import { title } from '$lib/stores';
 
 	// import type { PageData } from './$types';
@@ -6,4 +8,8 @@
 	title.set('Dashboard');
 </script>
 
-Selamat Datang,
+<Gadget />
+
+<hr class="my-6" />
+
+<DashboardTableSimpananPokok />
