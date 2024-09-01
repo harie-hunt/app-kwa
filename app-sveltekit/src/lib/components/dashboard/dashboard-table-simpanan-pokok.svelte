@@ -1,14 +1,28 @@
 <script lang="ts">
 	import Table from '$lib/ui/table/table.svelte';
+	import { formatNumberRibuan } from '$lib/utils/format';
 
-	const schema = [
+	type SimpananWithAnggota = {
+		no: string;
+		nama: string;
+		nilai: number;
+	};
+
+	type SchemaTable = {
+		label: string;
+		name: keyof SimpananWithAnggota;
+		func?: (arg: any) => void;
+	}[];
+
+	const schema: SchemaTable = [
 		{ label: 'No', name: 'no' },
-		{ label: 'Nama', name: 'nama' }
+		{ label: 'Nama', name: 'nama' },
+		{ label: 'Nilai', name: 'nilai', func: formatNumberRibuan }
 	];
 
-	const values: Record<string, any>[] = [
-		{ no: 'a1', nama: 'Apus' },
-		{ no: 'a2', nama: 'Sissi' }
+	const values: SimpananWithAnggota[] = [
+		{ no: 'a1', nama: 'Apus', nilai: 500000 },
+		{ no: 'a2', nama: 'Sissi', nilai: 400000 }
 	];
 </script>
 
