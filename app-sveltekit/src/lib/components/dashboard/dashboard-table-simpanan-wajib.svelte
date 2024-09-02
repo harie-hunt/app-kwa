@@ -8,23 +8,25 @@
 	type SimpananWithAnggota = {
 		no: string;
 		nama: string;
+		bulan: number;
 		nilai: number;
 	};
 
 	const schema: (SchemaTable & { name: keyof SimpananWithAnggota })[] = [
 		{ label: 'Nama', name: 'nama' },
 		{ label: 'No', name: 'no' },
+		{ label: 'Bulan', name: 'bulan', center: true },
 		{ label: 'Nilai', name: 'nilai', right: true, func: formatNumberRibuan }
 	];
 
 	const values: SimpananWithAnggota[] = [
-		{ no: 'a1', nama: 'Apus', nilai: 500000 },
-		{ no: 'a2', nama: 'Sissi', nilai: 40000 }
+		{ no: 'a1', nama: 'Apus', nilai: 500000, bulan: 4 },
+		{ no: 'a2', nama: 'Sissi', nilai: 40000, bulan: 3 }
 	];
 </script>
 
 <Card class="md:max-w-lg">
-	<h2 slot="head">Simpanan Pokok belum lunas</h2>
+	<h2 slot="head">Simpanan Wajib belum lunas</h2>
 
 	<div class="-mx-6 -my-4">
 		<Table {schema} {values}>
