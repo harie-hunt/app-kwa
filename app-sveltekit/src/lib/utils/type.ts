@@ -5,3 +5,10 @@ export type SchemaTable = {
     right?: boolean;
     center?: boolean;
 };
+
+
+export type Rekap = {
+    anggota: number
+    simpanan: number
+    pinjaman: number
+}
