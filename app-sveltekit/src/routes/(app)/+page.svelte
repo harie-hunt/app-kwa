@@ -4,12 +4,18 @@
 	import Gadget from '$lib/components/dashboard/gadget.svelte';
 	import { title } from '$lib/stores';
 
-	// import type { PageData } from './$types';
-	// export let data: PageData;
+	import type { PageData } from './$types';
+	export let data: PageData;
 	title.set('Dashboard');
 </script>
 
-<Gadget />
+<Gadget promise={data.promise_rekap} />
+
+{#await data.promise_belum_transaksi}
+	<p>..</p>
+{:then value}
+	<pre>{JSON.stringify(value, null, 2)}</pre>
+{/await}
 
 <hr class="my-6" />
 
