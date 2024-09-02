@@ -1,6 +1,6 @@
-export type SchemaTable<T extends Record<string, any>> = {
+export type SchemaTable = {
     label: string;
-    name: keyof T;
+    name: string
     func?: (arg: any) => void;
     right?: boolean;
     center?: boolean;
