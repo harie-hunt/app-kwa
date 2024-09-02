@@ -1,6 +1,9 @@
 <script lang="ts">
+	import Button from '$lib/ui/button/button.svelte';
+	import Card from '$lib/ui/card/card.svelte';
 	import Table from '$lib/ui/table/table.svelte';
 	import { formatNumberRibuan } from '$lib/utils/format';
+	import type { SchemaTable } from '$lib/utils/type';
 
 	type SimpananWithAnggota = {
 		no: string;
@@ -8,26 +11,26 @@
 		nilai: number;
 	};
 
-	type SchemaTable = {
-		label: string;
-		name: keyof SimpananWithAnggota;
-		func?: (arg: any) => void;
-	}[];
-
-	const schema: SchemaTable = [
-		{ label: 'No', name: 'no' },
+	const schema: (SchemaTable & { name: keyof SimpananWithAnggota })[] = [
 		{ label: 'Nama', name: 'nama' },
-		{ label: 'Nilai', name: 'nilai', func: formatNumberRibuan }
+		{ label: 'No', name: 'no' },
+		{ label: 'Nilai', name: 'nilai', right: true, func: formatNumberRibuan }
 	];
 
 	const values: SimpananWithAnggota[] = [
 		{ no: 'a1', nama: 'Apus', nilai: 500000 },
-		{ no: 'a2', nama: 'Sissi', nilai: 400000 }
+		{ no: 'a2', nama: 'Sissi', nilai: 40000 }
 	];
 </script>
 
-<h2 class="mb-3 font-medium">Simpanan Pokok belum lunas</h2>
+<Card class="md:max-w-lg">
+	<h2 slot="head">Simpanan Pokok belum lunas</h2>
 
-<div class="rounded-md">
-	<Table {schema} {values} />
-</div>
+	<div class="-mx-6 -my-4">
+		<Table {schema} {values}>
+			<Button>Bayar</Button>
+		</Table>
+	</div>
+
+	<div slot="foot">Total : 12</div>
+</Card>
