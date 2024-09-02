@@ -9,7 +9,7 @@ slot `head` `foot`
  -->
 <section class={cn('bg-white border rounded-md', $$props.class)}>
 	{#if $$slots.head}
-		<header class="border-b px-6 py-3 bg-gray-50 font-semibold text-lg text-slate-500">
+		<header class="border-b px-6 py-3 bg-gray-50 font-semibold text-lg text-slate-500 rounded-t-md">
 			<slot name="head" />
 		</header>
 	{/if}
